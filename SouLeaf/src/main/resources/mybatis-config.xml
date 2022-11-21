@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+		<!-- 만약에  null로 데이터가 전달되었으면 빈칸이 아닌 NULL 로 인식되도록 설정 -->
+	</settings>
+	<typeAliases>
+		<typeAlias type="com.souleaf.spring.member.domain.Member" alias="Member"/>
+		<typeAlias type="com.souleaf.spring.diary.domain.Diary" alias="Diary"/>
+		<typeAlias type="com.souleaf.spring.diary.domain.CalendarView" alias="CalendarView"/>
+		<typeAlias type="com.souleaf.spring.diary.domain.Guestbook" alias="Guestbook"/>
+		<typeAlias type="com.souleaf.spring.qna.domain.Qna" alias="Qna"/>
+		<typeAlias type="com.souleaf.spring.qna.domain.Ans" alias="Ans"/>
+		<typeAlias type="com.souleaf.spring.qna.domain.Qna" alias="Qna"/>
+		<typeAlias type="com.souleaf.spring.plant.domain.Plant" alias="Plant"/>
+		<typeAlias type="com.souleaf.spring.plant.domain.PlantInfo" alias="PlantInfo"/>
+		<typeAlias type="com.souleaf.spring.plant.domain.PlantFile" alias="PlantFile"/>
+		<typeAlias type="com.souleaf.spring.curiosity.domain.Curiosity" alias="Curiosity"/>
+		<typeAlias type="com.souleaf.spring.curiosity.domain.CuriosityReply" alias="CuriosityReply"/>
+		<typeAlias type="com.souleaf.spring.curiosity.domain.CuriositySearch" alias="CuriositySearch"/>
+		<typeAlias type="com.souleaf.spring.companion.domain.Companion" alias="Companion"/>
+		<typeAlias type="com.souleaf.spring.clinic.domain.Clinic" alias="Clinic"/>
+		<typeAlias type="com.souleaf.spring.clinic.domain.ClinicLike" alias="ClinicLike"/>
+		<typeAlias type="com.souleaf.spring.clinic.domain.ClinicReply" alias="ClinicReply"/>
+		<typeAlias type="com.souleaf.spring.clinic.domain.ClinicSearch" alias="ClinicSearch"/>
+		<typeAlias type="com.souleaf.spring.boast.domain.Boast" alias="Boast"/>
+		<typeAlias type="com.souleaf.spring.boast.domain.BoastReply" alias="BoastReply"/>
+		<typeAlias type="com.souleaf.spring.mypage.domain.MypageInfo" alias="MypageInfo"/>
+		<typeAlias type="com.souleaf.spring.admin.domain.MemberStatus" alias="MemberStatus"/>
+		<typeAlias type="com.souleaf.spring.admin.domain.TotalCount" alias="TotalCount"/>
+		<typeAlias type="com.souleaf.spring.mypage.domain.MyReply" alias="MyReply"/>
+		<typeAlias type="com.souleaf.spring.chat.room.Room" alias="Room"/>
+		<typeAlias type="com.souleaf.spring.chat.room.Chat" alias="Chat"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="mappers/member-mapper.xml"/>
+		<mapper resource="mappers/diary-mapper.xml"/>	
+		<mapper resource="mappers/qna-mapper.xml"/>
+		<mapper resource="mappers/ans-mapper.xml"/>
+		<mapper resource="mappers/plant-mapper.xml"/>
+		<mapper resource="mappers/curiosity-mapper.xml"/>
+		<mapper resource="mappers/companion-mapper.xml"/>
+		<mapper resource="mappers/clinic-mapper.xml"/>
+		<mapper resource="mappers/boast-mapper.xml"/>
+		<mapper resource="mappers/admin-mapper.xml"/>
+		<mapper resource="mappers/mypage-mapper.xml"/>
+		<mapper resource="mappers/room-mapper.xml"/>
+		</mappers>
+</configuration>

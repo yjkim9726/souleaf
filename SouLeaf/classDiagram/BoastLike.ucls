@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <package id="1" language="java" name="com.souleaf.spring.boastLike.domain" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/boastLike/domain" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="682" width="351" x="12" y="214"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="2" language="java" name="com.souleaf.spring.boastLike.service" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/boastLike/service" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="674" width="567" x="491" y="223"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="3" language="java" name="com.souleaf.spring.boastLike.store" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/boastLike/store" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="677" width="586" x="1185" y="220"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="4" language="java" name="com.souleaf.spring.boastLike.controller" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/boastLike/controller" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="667" width="489" x="1905" y="227"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="5" language="java" name="com.souleaf.spring.boastLike.domain.BoastLike" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/boastLike/domain/BoastLike.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="187" y="529"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="6" language="java" name="com.souleaf.spring.boastLike.service.BoastLikeService" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/boastLike/service/BoastLikeService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="768" y="419"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="7" language="java" name="com.souleaf.spring.boastLike.service.BoastLikeServiceImpl" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/boastLike/service/BoastLikeServiceImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="767" y="673"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="8" language="java" name="com.souleaf.spring.boastLike.store.BoastLikeStore" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/boastLike/store/BoastLikeStore.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1489" y="437"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="9" language="java" name="com.souleaf.spring.boastLike.store.BoastLikeStoreLogic" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/boastLike/store/BoastLikeStoreLogic.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1493" y="730"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="com.souleaf.spring.boastLike.controller.BoastLikeController" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/boastLike/controller/BoastLikeController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2164" y="549"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="11">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <realization id="12">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

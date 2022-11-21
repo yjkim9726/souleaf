@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="clinicMapper">
+	<resultMap type="Clinic" id="clinicResultMap">
+		<id property="clinicNo" column="CLINIC_NO"/>
+		<result property="clinicContent" column="CLINIC_CONTENT"/>
+		<result property="clinicFileName" column="CLINIC_FILENAME"/>
+		<result property="clinicDate" column="CLINIC_DATE"/>
+		<result property="clinicUpdate" column="CLINIC_UPDATEDATE"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+		<result property="clinicFileRename" column="CLINIC_FILERENAME"/>
+		<result property="clinicStatus" column="CLINIC_STATUS"/>
+		<result property="clinicCount" column="CLINIC_COUNT"/>
+		<result property="clinicContents" column="CLINIC_CONTENTS"/>
+		<result property="clinicLike" column="CLINIC_LIKE"/>
+		<result property="memberNick" column="MEMBER_NICK"/>
+		<result property="memberFileRename" column="MEMBER_FILERENAME"/>
+		<result property="replyCount" column="REPLY_COUNT"/>
+		<result property="num" column="NUM"/>
+		<result property="clinicPlace" column="CLINIC_PLACE"/>
+		<result property="clinicHowWater" column="CLINIC_HOWWATER"/>
+		<result property="clinicLastPot" column="CLINIC_LASTPOT"/>
+	</resultMap>
+	
+	<resultMap type="ClinicReply" id="clinicReplyResultMap">
+		<id property="cliniccommentNo" column="CLINICCOMMENT_NO"/>
+		<result property="cliniccommentContent" column="CLINICCOMMENT_CONTENT"/>
+		<result property="cliniccommentDate" column="CLINICCOMMENT_DATE"/>
+		<result property="cliniccommentStatus" column="CLINICCOMMENT_STATUS"/>
+		<result property="cliniccommentSelection" column="CLINICCOMMENT_SELECTION"/>
+		<result property="clinicNo" column="CLINIC_NO"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+		<result property="memberNick" column="MEMBER_NICK"/>		
+		<result property="memberFileRename" column="MEMBER_FILERENAME"/>		
+	</resultMap>
+	
+	<resultMap type="ClinicLike" id="clinicLikeResultMap">
+		<id property="likeNo" column="LIKE_NO"/>
+		<result property="clinicNo" column="CLINIC_NO"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+		<result property="likeCheck" column="LIKE_CHECK"/>
+	</resultMap>
+	
+	<insert id="insertClinic">
+		INSERT INTO CLINIC VALUES (SEQ_CLINIC.NEXTVAL,#{clinicContent},#{clinicFileName},SYSDATE,NULL,#{memberNo},#{clinicFileRename},DEFAULT,DEFAULT,#{clinicContents},DEFAULT, #{clinicPlace},#{clinicHowWater},#{clinicLastPot})
+	</insert>
+	
+	<update id="updateClinic" parameterType="Clinic">
+	<if test="clinicFileRename.toString() == ''">
+			UPDATE CLINIC SET CLINIC_CONTENT = #{clinicContent}, CLINIC_UPDATEDATE = SYSDATE, CLINIC_CONTENTS = #{clinicContents},CLINIC_PLACE = #{clinicPlace},CLINIC_HOWWATER =#{clinicHowWater},CLINIC_LASTPOT=#{clinicLastPot}  WHERE CLINIC_NO = #{clinicNo} AND MEMBER_NO = #{memberNo} AND CLINIC_STATUS = 'Y'
+	</if>
+	<if test="clinicFileRename.toString() != ''">
+			UPDATE CLINIC SET CLINIC_CONTENT = #{clinicContent}, CLINIC_UPDATEDATE = SYSDATE, CLINIC_FILERENAME = #{clinicFileRename}, CLINIC_CONTENTS = #{clinicContents}  WHERE CLINIC_NO = #{clinicNo} AND MEMBER_NO = #{memberNo} AND CLINIC_STATUS = 'Y'
+	</if>
+	</update>
+	
+	<update id="updateViewCount">
+		UPDATE CLINIC SET CLINIC_COUNT = CLINIC_COUNT+1 WHERE CLINIC_NO = #{clinicNo}
+	</update>
+	
+	<select id="selectAllList" parameterType="Clinic" resultMap="clinicResultMap">
+		SELECT CLINIC_NO,CLINIC_CONTENT,CLINIC_DATE,CLINIC_FILERENAME,MEMBER_NO,MEMBER_NICK,CLINIC_LIKE,CLINIC_COUNT,(SELECT COUNT(*) FROM CLINICCOMMENT B WHERE A.CLINIC_NO=B.CLINIC_NO) REPLY_COUNT FROM CLINIC A JOIN MEMBER USING(MEMBER_NO) WHERE CLINIC_STATUS = 'Y' ORDER BY CLINIC_NO DESC
+	</select>
+	
+	<select id="selectSearchList" parameterType="String" resultMap="clinicResultMap">
+		SELECT CLINIC_NO,CLINIC_CONTENT,CLINIC_DATE,CLINIC_FILERENAME,MEMBER_NO,MEMBER_NICK,CLINIC_LIKE,CLINIC_COUNT,(SELECT COUNT(*) FROM CLINICCOMMENT B WHERE A.CLINIC_NO=B.CLINIC_NO) REPLY_COUNT FROM CLINIC A JOIN MEMBER USING(MEMBER_NO) WHERE CLINIC_CONTENT LIKE '%'||#{value}||'%' AND CLINIC_STATUS = 'Y' ORDER BY CLINIC_NO DESC
+	</select>
+	
+	<select id="selectClinic" parameterType="Clinic" resultMap="clinicResultMap">
+		SELECT * FROM CLINIC JOIN MEMBER USING(MEMBER_NO) WHERE CLINIC_NO = #{clinicNo} AND CLINIC_STATUS = 'Y'
+	</select>
+	
+	<select id="selectListCount" resultType="_int">
+		SELECT COUNT(*) FROM CLINIC WHERE CLINIC_STATUS = 'Y'
+	</select>
+	
+	<select id="selectSearchListCount" parameterType="String" resultType="_int">
+		SELECT COUNT(*) FROM CLINIC WHERE CLINIC_STATUS = 'Y' AND CLINIC_CONTENT LIKE '%'||#{value}||'%'
+	</select>
+	
+	<update id="deleteClinic">
+		UPDATE CLINIC SET CLINIC_STATUS = 'N' WHERE CLINIC_NO = #{clinicNo}
+	</update>
+	
+	<update id="updateRankLike">
+		UPDATE CLINIC SET CLINIC_LIKE = CLINIC_LIKE+1 WHERE CLINIC_NO = #{clinicNo}
+	</update>
+	
+	<update id="updateRankunLike">
+		UPDATE CLINIC SET CLINIC_LIKE = CLINIC_LIKE-1 WHERE CLINIC_NO = #{clinicNo}
+	</update>
+	
+	<!-- 댓글 -->
+	
+	<insert id="insertReply">
+		INSERT INTO CLINICCOMMENT VALUES (SEQ_CLINICCOMMENT.NEXTVAL, #{cliniccommentContent}, DEFAULT, #{clinicNo}, #{memberNo}, DEFAULT, DEFAULT)
+	</insert>
+	
+	<select id="selectAllReplyList" parameterType="ClinicReply" resultMap="clinicReplyResultMap">
+		SELECT * FROM CLINICCOMMENT JOIN MEMBER USING(MEMBER_NO) WHERE CLINIC_NO = #{clinicNo} AND CLINICCOMMENT_STATUS = 'Y' ORDER BY CLINICCOMMENT_NO
+	</select>
+	
+	<select id="selectSelectionReply" parameterType="ClinicReply" resultMap="clinicReplyResultMap">
+		SELECT * FROM CLINICCOMMENT JOIN MEMBER USING(MEMBER_NO) WHERE CLINIC_NO = #{clinicNo} AND CLINICCOMMENT_STATUS = 'Y' AND CLINICCOMMENT_SELECTION = 'Y' ORDER BY CLINICCOMMENT_NO
+	</select>
+	
+	<update id="updateReply">
+		UPDATE CLINICCOMMENT SET CLINICCOMMENT_CONTENT = #{cliniccommentContent} WHERE CLINIC_NO= #{clinicNo} AND CLINICCOMMENT_NO = #{cliniccommentNo} AND MEMBER_NO = #{memberNo}
+	</update>
+	
+	<update id="deleteReply">
+		UPDATE CLINICCOMMENT SET CLINICCOMMENT_STATUS = 'N' WHERE CLINICCOMMENT_NO = #{cliniccommentNo}
+	</update>
+	
+	<update id="deleteReplys">
+		UPDATE CLINICCOMMENT SET CLINICCOMMENT_STATUS = 'N' WHERE CLINIC_NO = #{clinicNo}
+	</update>
+		
+	<update id="updateSelectionReply">
+		UPDATE CLINICCOMMENT SET CLINICCOMMENT_SELECTION = 'Y' WHERE CLINICCOMMENT_NO = #{cliniccommentNo} AND CLINICCOMMENT_STATUS = 'Y'
+	</update>
+	
+	<!-- 관리자 -->
+	<select id="selectAll" resultMap="clinicResultMap">
+		SELECT * FROM CLINIC JOIN MEMBER USING(MEMBER_NO) WHERE CLINIC_STATUS = 'Y'
+	</select>
+	
+	<update id="deleteAdminClinic" parameterType="Map">
+		UPDATE CLINIC SET CLINIC_STATUS = 'N' WHERE CLINIC_NO IN (${chkNo})
+	</update>
+	
+	
+	
+	
+	<!-- 마이페이지 -->
+	
+	<select id="selectAllMyClinic" resultMap="clinicResultMap">
+		SELECT ROW_NUMBER() OVER (ORDER BY CLINIC_DATE ASC) AS NUM, A.* FROM (SELECT * FROM CLINIC) A WHERE MEMBER_NO = #{memberNo} AND CLINIC_STATUS = 'Y' ORDER BY CLINIC_DATE DESC
+	</select>
+	
+	<select id="selectMyListCount" resultType="_int">
+		SELECT COUNT(*) FROM CLINIC WHERE MEMBER_NO = #{memberNo} AND CLINIC_STATUS = 'Y'
+	</select>
+	
+	<select id="selectMySearchAllList" parameterType="com.souleaf.spring.mypage.domain.MypageSearch" resultMap="clinicResultMap">
+		SELECT ROW_NUMBER() OVER (ORDER BY CLINIC_DATE ASC) AS NUM, A.* FROM ( SELECT * FROM CLINIC ) A 
+		<if test="searchCondition.toString() == 'searchTitle'">
+			WHERE MEMBER_NO = #{memberNo} AND CLINIC_CONTENT LIKE '%' || #{searchValue } || '%' AND CLINIC_STATUS = 'Y'
+		</if>	
+		<if test="searchCondition.toString() == 'searchContent'">
+			WHERE MEMBER_NO = #{memberNo} AND CLINIC_CONTENTS LIKE '%' || #{searchValue } || '%' AND CLINIC_STATUS = 'Y'
+		</if>
+		<if test="searchCondition.toString() == 'searchAll'">
+			WHERE MEMBER_NO = #{memberNo} AND (CLINIC_CONTENT LIKE '%' || #{searchValue } || '%' OR CLINIC_CONTENTS LIKE '%' || #{searchValue } || '%') AND CLINIC_STATUS = 'Y'
+		</if>
+		ORDER BY CLINIC_DATE DESC
+	</select> 
+	
+	<select id="getMySearchCount" resultType="_int">
+		SELECT COUNT(*) FROM CLINIC 
+		<if test="searchCondition.toString() == 'searchTitle'">
+			WHERE MEMBER_NO = #{memberNo} AND CLINIC_CONTENT LIKE '%' || #{searchValue } || '%'
+		</if>	
+		<if test="searchCondition.toString() == 'searchContent'">
+			WHERE MEMBER_NO = #{memberNo} AND CLINIC_CONTENTS LIKE '%' || #{searchValue } || '%'
+		</if>
+		<if test="searchCondition.toString() == 'searchAll'">
+			WHERE MEMBER_NO = #{memberNo} AND (CLINIC_CONTENT LIKE '%' || #{searchValue } || '%' OR CLINIC_CONTENTS LIKE '%' || #{searchValue } || '%')
+		</if>
+		AND CLINIC_STATUS = 'Y'
+	</select>
+
+	<update id="deleteMyClinic" parameterType="map">
+		UPDATE CLINIC SET CLINIC_STATUS = 'N' WHERE CLINIC_NO IN (${chkNo})
+	</update>
+
+	
+		<!-- 좋아요 -->
+	<select id="selectlike" parameterType="ClinicLike" resultMap="clinicLikeResultMap">
+    SELECT * FROM CLINICLIKE WHERE CLINIC_NO = #{clinicNo} and MEMBER_NO = #{memberNo}
+	</select>
+	
+	<insert id="insertlike">
+		INSERT INTO CLINICLIKE VALUES (SEQ_CLINICLIKE.NEXTVAL, #{clinicNo}, #{memberNo}, 1)
+	</insert>
+	
+	<update id="updatelike">
+		UPDATE CLINICLIKE SET LIKE_CHECK = #{likeCheck} WHERE CLINIC_NO = #{clinicNo} AND MEMBER_NO = #{memberNo}
+	</update>
+</mapper>

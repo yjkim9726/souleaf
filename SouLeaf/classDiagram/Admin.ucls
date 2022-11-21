@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <package id="1" language="java" name="com.souleaf.spring.admin.domain" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/admin/domain" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="558" width="583" x="41" y="39"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="2" language="java" name="com.souleaf.spring.admin.domain.MemberStatus" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/admin/domain/MemberStatus.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="113" width="221" x="193" y="343"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.souleaf.spring.admin.domain.TotalCount" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/admin/domain/TotalCount.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="150" width="221" x="199" y="146"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="4" language="java" name="com.souleaf.spring.admin.service" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/admin/service" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="549" width="673" x="705" y="51"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <interface id="5" language="java" name="com.souleaf.spring.admin.service.AdminService" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/admin/service/AdminService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1023" y="228"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="6" language="java" name="com.souleaf.spring.admin.service.AdminServiceImpl" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/admin/service/AdminServiceImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="234" width="375" x="835" y="346"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="7" language="java" name="com.souleaf.spring.admin.store" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/admin/store" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="562" width="596" x="1455" y="40"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <interface id="8" language="java" name="com.souleaf.spring.admin.store.AdminStore" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/admin/store/AdminStore.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1767" y="223"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="9" language="java" name="com.souleaf.spring.admin.store.AdminStoreLogic" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/admin/store/AdminStoreLogic.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1771" y="471"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="10" language="java" name="com.souleaf.spring.admin.controller" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/admin/controller" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="622" width="578" x="2135" y="30"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="11" language="java" name="com.souleaf.spring.admin.controller.AdminController" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/admin/controller/AdminController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2454" y="371"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="12">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <realization id="13">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

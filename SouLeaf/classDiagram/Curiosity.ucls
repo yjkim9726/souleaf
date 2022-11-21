@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <package id="1" language="java" name="com.souleaf.spring.curiosity.domain" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/curiosity/domain" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="739" width="1050" x="13" y="201"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="2" language="java" name="com.souleaf.spring.curiosity.domain.Curiosity" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/curiosity/domain/Curiosity.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="352" width="584" x="19" y="312"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.souleaf.spring.curiosity.domain.CuriosityReply" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/curiosity/domain/CuriosityReply.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="835" y="620"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="com.souleaf.spring.curiosity.domain.CuriositySearch" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/curiosity/domain/CuriositySearch.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="310" y="797"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="5" language="java" name="com.souleaf.spring.curiosity.service" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/curiosity/service" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="732" width="1084" x="1220" y="211"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <interface id="6" language="java" name="com.souleaf.spring.curiosity.service.CuriosityService" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/curiosity/service/CuriosityService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1492" y="544"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="7" language="java" name="com.souleaf.spring.curiosity.service.CuriosityServiceImpl" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/curiosity/service/CuriosityServiceImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2026" y="557"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="8" language="java" name="com.souleaf.spring.curiosity.store" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/curiosity/store" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="738" width="1163" x="2424" y="208"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <interface id="9" language="java" name="com.souleaf.spring.curiosity.store.CuriosityStore" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/curiosity/store/CuriosityStore.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2714" y="551"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="10" language="java" name="com.souleaf.spring.curiosity.store.CuriosityStoreLogic" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/curiosity/store/CuriosityStoreLogic.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3298" y="564"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="11" language="java" name="com.souleaf.spring.curiosity.controller" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/curiosity/controller" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="732" width="876" x="3706" y="216"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="12" language="java" name="com.souleaf.spring.curiosity.controller.CuriosityController" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/curiosity/controller/CuriosityController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4146" y="564"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="13">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <realization id="14">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

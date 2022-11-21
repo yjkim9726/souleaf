@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <package id="1" language="java" name="com.souleaf.spring.chat.handler" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/chat/handler" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="478" width="472" x="657" y="171"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="2" language="java" name="com.souleaf.spring.chat.handler.SocketHandler" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/chat/handler/SocketHandler.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="893" y="456"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="3" language="java" name="com.souleaf.spring.chat.config" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/chat/config" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="445" width="567" x="1172" y="171"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="4" language="java" name="com.souleaf.spring.chat.config.WebSocketConfig" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/chat/config/WebSocketConfig.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1455" y="399"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="5" language="java" name="com.souleaf.spring.chat.room" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/chat/room" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="611" width="618" x="-14" y="176"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="6" language="java" name="com.souleaf.spring.chat.room.Chat" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/chat/room/Chat.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="253" width="420" x="87" y="243"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="com.souleaf.spring.chat.room.Room" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/chat/room/Room.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="272" width="442" x="81" y="505"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="8" language="java" name="com.souleaf.spring.chat.service" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/chat/service" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="510" width="484" x="1792" y="187"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <interface id="9" language="java" name="com.souleaf.spring.companion.service.CompanionService" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/companion/service/CompanionService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2039" y="349"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="10" language="java" name="com.souleaf.spring.companion.service.CompanionServiceImpl" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/companion/service/CompanionServiceImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2042" y="578"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="11" language="java" name="com.souleaf.spring.chat.store" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/chat/store" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="564" width="507" x="2330" y="198"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <interface id="12" language="java" name="com.souleaf.spring.companion.store.CompanionStore" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/companion/store/CompanionStore.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2591" y="380"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="13" language="java" name="com.souleaf.spring.companion.store.CompanionStoreLogic" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/companion/store/CompanionStoreLogic.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2590" y="637"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="14" language="java" name="com.souleaf.spring.chat.controller" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/chat/controller" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="562" width="740" x="2909" y="201"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="15" language="java" name="com.souleaf.spring.companion.controller.CompanionController" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/companion/controller/CompanionController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3274" y="487"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="16">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <realization id="17">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="12"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

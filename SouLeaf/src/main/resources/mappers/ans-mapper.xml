@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="ansMapper">
+	<resultMap type="Ans" id="ansResultMap">
+		<id property="ansNo" column="ANS_NO"></id>
+		<result property="memberNo" column="MEMBER_NO"></result>
+		<result property="ansTitle" column="ANS_TITLE"></result>
+		<result property="ansContent" column="ANS_CONTENT"></result>
+		<result property="qnaNo" column="QNA_NO"></result>
+		<result property="ansDate" column="ANS_DATE"></result>
+	</resultMap>
+	
+	<select id="selectAnsList" resultMap="ansResultMap">
+		SELECT * FROM ANS ORDER BY ANS_NO DESC  
+	</select>
+	
+	<select id="selectListCount" resultType="_int">
+		
+	</select>
+	
+	<insert id="insertAns" parameterType="Ans">
+		INSERT INTO ANS VALUES(SEQ_ANS.NEXTVAL, #{memberNo}, #{ansTitle}, #{ansContent}, DEFAULT, #{qnaNo})
+	</insert>
+	
+	<select id="selectOne" resultMap="ansResultMap">
+		SELECT * FROM ANS JOIN QNA USING(QNA_NO) WHERE QNA_NO = #{qnaNo} AND QNA_STATUS = 'Y'
+	</select>
+	
+	<update id="updateAns" parameterType="Ans">
+		UPDATE ANS SET ANS_CONTENT = #{ansContent} WHERE ANS_NO = #{ansNo}
+	</update>
+</mapper>

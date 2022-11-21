@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="diaryMapper" >
+ 
+ 	<resultMap type="Diary" id="diaryResultMap">
+ 		<id property="diaryNo" column="DIARY_NO"/>
+ 		<result property="diaryTitle" column="DIARY_TITLE"/>
+ 		<result property="diaryContent" column="DIARY_CONTENT"/>
+ 		<result property="diaryStartDate" column="DIARY_STARTDATE"/>
+ 		<result property="diaryEndDate" column="DIARY_ENDDATE"/>
+ 		<result property="diaryUpdate" column="DIARY_UPDATE"/>
+ 		<result property="diaryColor" column="DIARY_COLOR"/>
+ 		<result property="diaryPicname" column="DIARY_PICNAME"/>
+ 		<result property="diaryRepicname" column="DIARY_REPICNAME"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+ 		<result property="companionNo" column="COMPANION_NO"/>
+ 		<result property="companionNick" column="COMPANION_NICK"/>
+ 		<result property="diaryStatus" column="DIARY_STATUS"/>
+ 		<result property="imgUrl" column="IMG_URL"/>
+ 	</resultMap>
+ 	 <resultMap type="Diary" id="diaryJsonMap">
+ 		<result property="diaryRepicname" column="DIARY_REPICNAME"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+ 	</resultMap>
+ 	<resultMap type="Guestbook" id="guestbookResultMap">
+ 		<id property="guestbookNo" column="GUESTBOOK_NO"/>
+ 		<result property="guestbookContent" column="GUESTBOOK_CONTENT"/>
+ 		<result property="guestbookDate" column="GUESTBOOK_DATE"/>
+ 		<result property="guestbookUpdate" column="GUESTBOOK_UPDATE"/>
+ 		<result property="memberNo" column="MEMBER_NO"/>
+ 		<result property="memberDiary" column="MEMBER_DIARY"/>
+ 		<result property="memberNick" column="MEMBER_NICK" />
+ 		<result property="memberFileRename" column="MEMBER_FILERENAME" />
+ 	</resultMap>
+ 	
+ 	<select id="selectAllDairy" resultType="CalendarView">
+ 		SELECT DIARY_NO AS "diaryNo" ,DIARY_TITLE AS "title",DIARY_CONTENT AS "constraint",DIARY_STARTDATE AS "start",DIARY_ENDDATE AS "end",DIARY_UPDATE,DIARY_COLOR AS "color",DIARY_PICNAME AS "diaryPicname",DIARY_REPICNAME AS "diaryRepicname",D.MEMBER_NO AS "memberNo",C.COMPANION_NICK AS "companionNick", C.COMPANION_LASTWATER AS "companionLastwater", C.COMPANION_NEEDWATER AS "companionNeedwater", COMPANION_NO AS "companionNo" ,IMG_URL AS "image_url" FROM DIARY D LEFT JOIN COMPANION C USING (COMPANION_NO) WHERE D.MEMBER_NO = #{memberNo}
+ 	</select>
+ 	
+ 	<select id="selectOneDiary" parameterType="Diary" resultMap="diaryResultMap">
+ 		SELECT * FROM DIARY WHERE DIARY_NO = #{diaryNo}
+ 	</select>
+ 	
+	<select id="selectPlantPicAll" parameterType="Diary" resultMap="diaryJsonMap">
+		SELECT D.DIARY_REPICNAME, D.MEMBER_NO,REPLACE(D.DIARY_STARTDATE,'-','') AS "diaryStartDate" FROM DIARY D, DIARY Y WHERE D.MEMBER_NO = #{memberNo} AND D.DIARY_NO = Y.DIARY_NO AND D.DIARY_REPICNAME IS NOT NULL ORDER BY D.DIARY_STARTDATE DESC
+	</select>
+	
+	<select id="selectGuestbookList" parameterType="Guestbook" resultMap="guestbookResultMap">
+		SELECT GUESTBOOK_NO, GUESTBOOK_CONTENT, GUESTBOOK_DATE, GUESTBOOK_UPDATE, MEMBER_NO, MEMBER_NICK ,MEMBER_DIARY,MEMBER_FILERENAME FROM GUESTBOOK JOIN MEMBER USING(MEMBER_NO) WHERE MEMBER_DIARY = #{memberDiary} ORDER BY GUESTBOOK_DATE DESC
+	</select>
+	
+	<select id="selectByMemberDiary" parameterType="Diary" resultMap="diaryResultMap">
+		SELECT * FROM (SELECT * FROM DIARY WHERE MEMBER_NO = #{memberNo} AND COMPANION_NO = #{companionNo} AND DIARY_STATUS = 'W' ORDER BY DIARY_STARTDATE DESC) WHERE ROWNUM = 1
+	</select>
+	
+	<select id="selectAllPicOneComanion" parameterType="Diary" resultMap="diaryResultMap">
+		SELECT D.DIARY_REPICNAME, D.MEMBER_NO, REPLACE(D.DIARY_STARTDATE,'-','') AS "diaryStartDate" FROM DIARY D, DIARY Y WHERE D.MEMBER_NO = #{memberNo} AND D.COMPANION_NO = #{companionNo} AND D.DIARY_NO = Y.DIARY_NO AND D.DIARY_REPICNAME IS NOT NULL ORDER BY D.DIARY_STARTDATE ASC
+	</select>
+	
+	<insert id="insertDiary" useGeneratedKeys="true" keyProperty="diaryNo" keyColumn="DIARY_NO">
+		INSERT INTO DIARY VALUES (SEQ_DIARY.NEXTVAL,#{diaryTitle},#{diaryContent},#{diaryStartDate},#{diaryStartDate},NULL,#{diaryColor},#{diaryPicname},#{diaryRepicname},#{memberNo},#{companionNo},#{diaryStatus},#{imgUrl})
+	</insert>
+	
+	<insert id="insertWaterDiary" useGeneratedKeys="true" keyProperty="diaryNo" keyColumn="DIARY_NO">
+      INSERT INTO DIARY VALUES (SEQ_DIARY.NEXTVAL,#{diaryTitle},#{diaryContent},#{diaryStartDate},#{diaryStartDate},NULL,#{diaryColor},#{diaryPicname},#{diaryRepicname},#{memberNo},SEQ_COMPANION.CURRVAL,#{diaryStatus},#{imgUrl})
+  	</insert>
+	
+	<delete id="deleteReDiary">
+		DELETE FROM DIARY WHERE COMPANION_NO = #{companionNo} AND DIARY_STATUS =#{diaryStatus}
+	</delete>
+	
+	<update id="updateDiary">
+		UPDATE DIARY SET 
+		DIARY_TITLE = #{diaryTitle},DIARY_CONTENT=#{diaryContent},DIARY_STARTDATE=#{diaryStartDate},DIARY_ENDDATE=#{diaryStartDate},DIARY_UPDATE= SYSDATE,DIARY_COLOR=#{diaryColor},DIARY_PICNAME=#{diaryPicname},DIARY_REPICNAME=#{diaryRepicname} WHERE DIARY_NO = #{diaryNo}
+	</update>
+	
+	<delete id="deleteDiary">
+		DELETE FROM DIARY WHERE DIARY_NO = #{diaryNo}
+	</delete>
+	
+	<insert id="insertGuestbook">
+		INSERT INTO GUESTBOOK 
+		VALUES (SEQ_GUESTBOOK.NEXTVAL, #{guestbookContent},SYSDATE,NULL,#{memberNo},#{memberDiary})
+	</insert>
+	
+	<update id="updateGuestbook">
+		UPDATE GUESTBOOK SET GUESTBOOK_CONTENT = #{guestbookContent},GUESTBOOK_UPDATE = SYSDATE WHERE GUESTBOOK_NO = #{guestbookNo}
+	</update>
+	
+	<delete id="deleteGuestbook">
+		DELETE FROM GUESTBOOK WHERE GUESTBOOK_NO = #{guestbookNo}
+	</delete>
+
+ </mapper>

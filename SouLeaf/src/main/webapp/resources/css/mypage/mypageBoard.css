@@ -1,0 +1,134 @@
+@charset "UTF-8";
+
+/* 마이페이지 내 게시글 관리 탭 */
+.myPageBoard-content {
+  margin: 50px auto;
+}
+.tab-pane {
+  position:relative;
+  color: rgba(0,0,0,.87);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+  border-radius: 1px;
+  width:1300px;
+  height: auto;
+  margin: 0 auto 100px;
+  padding: 30px;
+  text-align: center;
+  justify-content: center;
+  /* overflow: hidden; */
+  clear: left;
+}
+
+.tab-content {
+  width:1300px;
+  height: auto;
+  margin: 100px auto 100px;
+}
+.nav-tab-content {
+  margin-left: 30px;
+}
+.nav-pills .nav-item .nav-link {
+  line-height: 24px;
+  font-size: 15px;
+  font-weight: 500;
+  min-width: 100px;
+  color: #555;
+  transition: all .3s;
+  /* padding: 10px 15px; */
+  text-align: center;
+  border-radius: 4px;
+}
+.nav-pills:not(.flex-column) .nav-item+.nav-item:not(:first-child) {
+  margin-left: 5px;
+}
+
+.nav-pills .nav-item .nav-link.active {
+  color: #fff;
+  background-color: #03ba5f;
+}
+
+.nav-pills .nav-item .nav-link:not(.active):hover {
+  background-color: rgba(200,200,200,.2);
+}
+
+.nav-pills .nav-item i {
+  display: block;
+  font-size: 30px;
+  padding: 15px 0;
+}
+
+.nav-pills.flex-column .nav-item+.nav-item {
+  margin-top: 5px;
+}
+
+/* 자랑하기 클리닉 궁금해요 탭 클릭 끝@@@@ */
+
+.btn {
+  font-size: 14px;
+  padding: 10px;
+}
+.btnGreen {
+  margin-right: 15px;
+}
+
+
+.mypageTable{
+  margin-top: 30px;
+}
+
+/* 검색 박스 디자인 */
+ #custom-search-input{
+  padding: 3px;
+  border: solid 1px #E4E4E4;
+  border-radius: 6px;
+  background-color: #fff;
+  width: 450px;
+} 
+
+#custom-search-input input{
+  width: 375px;
+  height: inherit;
+  border: 0;
+  box-shadow: none;
+}
+
+#custom-search-input button{
+  margin: 2px 0 0 0;
+  background: none;
+  box-shadow: none;
+  border: 0;
+  color: #666666;
+  padding: 0 8px 0 10px;
+  border-left: solid 1px #ccc;
+}
+
+.input-group {
+  padding: 0 10px 0 10px;
+}
+
+#custom-search-input .fa-search{
+  font-size: 24px;
+  margin-top: 5px;
+}
+
+#searchCondition {
+  width: 100px;
+  height: 45px;
+  border:solid 1px #ccc ;
+}
+
+#clinicSearchCondition {
+  width: 100px;
+  height: 45px;
+  border:solid 1px #ccc ;
+}
+
+#boastSearchCondition {
+  width: 100px;
+  height: 45px;
+  border:solid 1px #ccc ;
+}
+
+.noColor{
+  color: black;
+}

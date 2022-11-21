@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <package id="1" language="java" name="com.souleaf.spring.boast.domain" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/boast/domain" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="767" width="702" x="-92" y="127"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="2" language="java" name="com.souleaf.spring.boast.service" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/boast/service" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="775" width="842" x="743" y="124"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="3" language="java" name="com.souleaf.spring.boast.store" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/boast/store" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="759" width="832" x="1688" y="137"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="4" language="java" name="com.souleaf.spring.boast.controller" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/boast/controller" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="756" width="814" x="2635" y="135"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="5" language="java" name="com.souleaf.spring.boast.domain.Boast" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/boast/domain/Boast.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="415" width="295" x="-79" y="205"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="com.souleaf.spring.boast.domain.BoastReply" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/boast/domain/BoastReply.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="252" width="282" x="248" y="206"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="com.souleaf.spring.boast.domain.BoastSearch" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/boast/domain/BoastSearch.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="47" y="740"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="com.souleaf.spring.boast.domain.BoFile" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/boast/domain/BoFile.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="211" width="324" x="247" y="473"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="9" language="java" name="com.souleaf.spring.boast.service.BoastService" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/boast/service/BoastService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="952" y="481"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="10" language="java" name="com.souleaf.spring.boast.service.BoastServiceImpl" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/boast/service/BoastServiceImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1385" y="502"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="11" language="java" name="com.souleaf.spring.boast.store.BoastStore" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/boast/store/BoastStore.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1899" y="477"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="12" language="java" name="com.souleaf.spring.boast.store.BoastStoreLogic" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/boast/store/BoastStoreLogic.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2306" y="497"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="com.souleaf.spring.boast.controller.BoastController" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/boast/controller/BoastController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3048" y="531"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="14">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <realization id="15">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

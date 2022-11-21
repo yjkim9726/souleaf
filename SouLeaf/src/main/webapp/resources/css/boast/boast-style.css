@@ -1,0 +1,37 @@
+@charset "UTF-8";
+.boast-title{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 200px;
+  height: 25px;
+}
+.emojionearea, .emojionearea.form-control {
+    display: block;
+    position: relative!important;
+    width: 90%;
+    margin-left: 2%;
+}
+.boast-btn{
+	cursor: pointer;
+}
+.reply-btn {
+   /*     float: right;
+    position: absolute;
+    top: -24px;
+    right: 3%;
+    height: 32px;
+    background: #fff0;
+    color: #000;
+    border-color: #fff0; */
+ 
+    float: right;
+    position: absolute;
+    bottom: 0%;
+    right: 3.5%;
+    height: 34px;
+    /* background: #fff0; */
+    /* color: #000; */
+    /* border-color: #fff0; */
+
+}

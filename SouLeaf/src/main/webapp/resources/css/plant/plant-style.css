@@ -1,0 +1,252 @@
+@charset "UTF-8";
+.pd-icon{
+	color: #fff;
+	font-size: 25px;
+}
+.pdi-icon{
+	color: #00bd56;
+    font-size: 45px;
+}
+.services-2{
+	margin-bottom: 30px;
+}
+.heading-section{
+	margin-bottom: 3rem;
+}
+.picon-active{
+	background: #00bd56;
+}
+.picon {
+	width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #ddd;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.picon span {
+	font-size: 20px;
+	color: #fff;
+}
+
+.dbox p span {
+    font-weight: 500;
+    color: #b5b5b5;
+}
+
+ .dragAndDropDiv {
+                border: 2px dashed #92AAB0;
+                width: 1000px;
+                height: 200px;
+                color: #92AAB0;
+                text-align: center;
+                vertical-align: middle;
+                padding: 10px 0px 10px 10px;
+                font-size:200%;
+                display: table-cell;
+            }
+            .progressBar {
+                width: 200px;
+                height: 22px;
+                border: 1px solid #ddd;
+                border-radius: 5px; 
+                overflow: hidden;
+                display:inline-block;
+                margin:0px 10px 5px 5px;
+                vertical-align:top;
+            }
+             
+            .progressBar div {
+                height: 100%;
+                color: #fff;
+                text-align: right;
+                line-height: 22px; /* same as #progressBar height if we want text middle aligned */
+                width: 0;
+                background-color: #0ba1b5; border-radius: 3px; 
+            }
+            .statusbar{
+                border-top:1px solid #A9CCD1;
+                min-height:25px;
+                width:99%;
+                padding:10px 10px 0px 10px;
+                vertical-align:top;
+            }
+            .statusbar:nth-child(odd){
+                background:#EBEFF0;
+            }
+            .filename{
+                display:inline-block;
+                vertical-align:top;
+                width:250px;
+            }
+            .filesize{
+                display:inline-block;
+                vertical-align:top;
+                color:#30693D;
+                width:100px;
+                margin-left:10px;
+                margin-right:5px;
+            }
+            .abort{
+                background-color:#A8352F;
+                -moz-border-radius:4px;
+                -webkit-border-radius:4px;
+                border-radius:4px;display:inline-block;
+                color:#fff;
+                font-family:arial;font-size:13px;font-weight:normal;
+                padding:4px 15px;
+                cursor:pointer;
+                vertical-align:top
+            }
+                
+ .btn, .fileupload-buttonbar .toggle {
+margin-bottom: 5px;
+}
+/* .btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open .dropdown-toggle.btn-success {
+color: #fff;
+background-color: #47a447;
+border-color: #398439;
+} */
+.btn:hover, .btn:focus {
+color: #FFF;
+text-decoration: none;
+}
+.fileinput-button {
+position: relative;
+overflow: hidden;
+}
+.btn {
+display: inline-block;
+margin-bottom: 0;
+font-weight: 400;
+text-align: center;
+vertical-align: middle;
+cursor: pointer;
+background-image: none;
+border: 1px solid transparent;
+white-space: nowrap;
+padding: 6px 12px;
+font-size: 14px;
+line-height: 1.42857143;
+border-radius: 4px;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+.glyphicon {
+position: relative;
+top: 1px;
+display: inline-block;
+font-family: 'Glyphicons Halflings';
+font-style: normal;
+font-weight: 400;
+line-height: 1;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+.glyphicon-plus:before {
+content: "\2b";
+}
+.btn-light {
+color: #fff;
+/*background-color: #5cb85c;
+border-color: #4cae4c;*/
+font-weight: bold;
+text-align: center;
+padding: 1em 15em;
+margin: 10px 0px 0px 0px;
+color: #555;
+border: 2px dashed #555;
+border-radius: 7px;
+margin-bottom: 20px;
+}
+
+.fileinput-button input {
+position: absolute;
+top: 0;
+right: 0;
+margin: 0;
+opacity: 0;
+-ms-filter: 'alpha(opacity=0)';
+font-size: 200px;
+direction: ltr;
+cursor: pointer;
+}
+input[type=file] {
+display: block;
+}
+input, button, select, textarea {
+font-family: inherit;
+font-size: inherit;
+line-height: inherit;
+}
+button, input, optgroup, select, textarea {
+color: inherit;
+font: inherit;
+margin: 0;
+}
+input[type="file"] {
+align-items: baseline;
+color: inherit;
+text-align: start;
+}
+input[type="hidden"], input[type="image"], input[type="file"] {
+-webkit-appearance: initial;
+padding: initial;
+background-color: initial;
+border: initial;
+}
+input[type="password"], input[type="search"] {
+-webkit-appearance: textfield;
+padding: 1px;
+background-color: white;
+border: 2px inset;
+border-image-source: initial;
+border-image-slice: initial;
+border-image-width: initial;
+border-image-outset: initial;
+border-image-repeat: initial;
+-webkit-rtl-ordering: logical;
+-webkit-user-select: text;
+cursor: auto;
+}
+input, textarea, keygen, select, button {
+margin: 0em;
+font: -webkit-small-control;
+color: initial;
+letter-spacing: normal;
+word-spacing: normal;
+text-transform: none;
+text-indent: 0px;
+text-shadow: none;
+display: inline-block;
+text-align: start;
+}
+user agent stylesheetinput, textarea, keygen, select, button, meter, progress {
+-webkit-writing-mode: horizontal-tb;
+}
+
+/* .btn-outline-success {
+	border-color: #00bd56;
+}
+ */
+.btn-outline-success {
+    color: #666;
+    border-color: #aaa;
+}
+
+.plant-search {
+	    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    padding-left: 0;
+    background: #f8f9fd !important;
+}
+
+.reset-btn{
+	background: #00bd56;
+    border-radius: 25px;
+}

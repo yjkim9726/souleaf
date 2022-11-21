@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="qnaMapper">
+
+	<resultMap type="Qna" id="qnaResultMap">
+		<id property="qnaNo" column="QNA_NO"></id>
+		<result property="memberNo" column="MEMBER_NO"></result>
+		<result property="memberNick" column="MEMBER_NICK"></result>
+		<result property="qnaTitle" column="QNA_TITLE"></result>
+		<result property="qnaContent" column="QNA_CONTENT"></result>
+		<result property="qnaDate" column="QNA_DATE"></result>
+		<result property="qnaUpdate" column="QNA_UPDATE"></result>
+		<result property="qnaStatus" column="QNA_STATUS"></result>
+		<result property="qnaCount" column="QNA_COUNT"></result>
+		<result property="ansNo" column="ANS_NO"></result>
+		<result property="num" column="NUM"/>
+		<result property="ansContent" column="ANS_CONTENT"/>
+	</resultMap>
+
+	<select id="selectListCount" resultType="_int">
+		SELECT COUNT(*) FROM QNA WHERE QNA_STATUS = 'Y'
+	</select>
+	
+	<select id="selectQnaList" parameterType="Qna" resultMap="qnaResultMap">
+		SELECT QNA_NO,QNA_CONTENT,QNA_DATE,MEMBER_NICK,ANS_NO,QNA_STATUS FROM QNA Q LEFT JOIN ANS A USING(QNA_NO) JOIN MEMBER M ON Q.MEMBER_NO=M.MEMBER_NO WHERE QNA_STATUS = 'Y' ORDER BY QNA_NO DESC
+	</select>
+
+	<select id="selectAllList" resultMap="qnaResultMap">
+		SELECT * FROM QNA WHERE QNA_STATUS = 'Y' ORDER BY QNA BY QNA_NO DESC
+	</select>
+
+	<insert id="insertQna">
+		INSERT INTO QNA VALUES(SEQ_QNA.NEXTVAL, #{memberNo}, #{qnaTitle}, #{qnaContent},
+		DEFAULT, DEFAULT, DEFAULT)
+	</insert>
+
+	<select id="selectOne" resultMap="qnaResultMap">
+		SELECT * FROM QNA WHERE QNA_NO = #{qnaNo} AND QNA_STATUS = 'Y'
+	</select>
+	
+	<!-- 마이페이지 내가 쓴 qna 리스트 불러오기 -->
+	<select id="selectAllMyQna" resultMap="qnaResultMap">
+		SELECT ROW_NUMBER() OVER (ORDER BY QNA_DATE ASC) AS NUM, A.* FROM (SELECT QNA_NO, QNA_CONTENT, QNA_DATE, ANS_NO, ANS_CONTENT, Q.MEMBER_NO, QNA_STATUS FROM QNA Q FULL OUTER JOIN ANS ANS USING (QNA_NO) WHERE QNA_STATUS = 'Y') A WHERE A.MEMBER_NO = #{memberNo} AND A.QNA_STATUS = 'Y' ORDER BY A.QNA_DATE DESC
+	</select>
+	
+	<select id="selectMyListCount" resultType="_int">
+		SELECT COUNT(*) FROM QNA WHERE MEMBER_NO = #{memberNo} AND QNA_STATUS = 'Y'
+	</select>
+	
+	
+	<!-- 마이페이지 끝	 -->
+	<update id="updateQna">
+		UPDATE QNA SET QNA_TITLE = #{qnaTitle}, QNA_CONTENT = #{qnaContent}, QNA_UPDATE = SYSDATE WHERE QNA_NO = #{qnaNo}
+	</update>
+
+	<update id="updateCount">
+		UPDATE QNA SET QNA_COUNT = QNA_COUNT + 1 WHERE QNA_NO = #{qnaNo}
+	</update>
+
+	<update id="deleteQna" parameterType="_int">
+		UPDATE QNA SET QNA_STATUS = 'N' WHERE QNA_NO = #{qnaNo} AND QNA_STATUS = 'Y'
+	</update>
+	
+	<select id ="selectAdminQnaList" resultMap="qnaResultMap">
+		SELECT QNA_NO,QNA_CONTENT,QNA_DATE,MEMBER_NICK,ANS_NO,QNA_STATUS FROM QNA Q LEFT JOIN ANS A USING(QNA_NO) JOIN MEMBER M ON Q.MEMBER_NO=M.MEMBER_NO WHERE QNA_STATUS = 'Y' ORDER BY QNA_NO DESC
+		
+	</select>
+	
+	<update id="deleteAdminQna" parameterType="map">
+		UPDATE QNA SET QNA_STATUS = 'N' WHERE QNA_NO IN (${chkNo})
+	</update>
+</mapper>
+ 

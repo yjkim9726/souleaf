@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="roomMapper">
+	<resultMap type="Room" id="roomResultMap">
+		<result property="roomNumber" column="ROOM_NUMBER"/>
+		<result property="roomName" column="ROOM_NAME"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+		<result property="memberNick" column="MEMBER_NICK"/>
+		<result property="withMemberNo" column="WITHMEMBER_NO"/>
+		<result property="withMemberNick" column="WITHMEMBER_NICK"/>
+		<result property="roomStatus" column="ROOM_STATUS"/>
+		<result property="lastChatDate" column="LASTCHAT_DATE"/>
+		<result property="lastChatMessage" column="LASTCHAT_MESSAGE"/>
+		<result property="withMemberPick" column="WITHMEMBER_PICK"/>
+	</resultMap>
+	
+	<resultMap type="Chat" id="ChatResultMap">
+		<id property="chatNo" column="CHAT_NO"/>
+		<result property="roomNumber" column="ROOM_NUMBER"/>
+		<result property="roomName" column="ROOM_NAME"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+		<result property="memberNick" column="MEMBER_NICK"/>
+		<result property="withMemberNo" column="WITHMEMBER_NO"/>
+		<result property="withMemberNick" column="WITHMEMBER_NICK"/>
+		<result property="msg" column="MSG"/>
+		<result property="chatDate" column="CHAT_DATE"/>
+	</resultMap>
+	
+	<select id="selectAllList" parameterType="Room" resultMap="roomResultMap">
+		SELECT * FROM ROOM WHERE MEMBER_NO = #{memberNo} AND ROOM_STATUS = 'Y' ORDER BY LASTCHAT_DATE DESC
+	</select>
+	
+	<select id="selectMaxRoomNum" resultType="_int">
+		SELECT MAX(ROOM_NUMBER) FROM ROOM
+	</select>
+	
+	<select id="selectOneRoom" parameterType="Room" resultMap="roomResultMap">
+		SELECT * FROM ROOM WHERE MEMBER_NO = #{memberNo} AND ROOM_NUMBER = #{roomNumber}
+	</select>
+	
+	<insert id="insertRoom">
+		INSERT INTO ROOM VALUES (#{roomNumber}, #{roomName},#{memberNo},#{memberNick},#{withMemberNo},#{withMemberNick},DEFAULT,SYSDATE,#{lastChatMessage},#{withMemberPick})
+	</insert>
+	
+	<insert id="insertChat">
+		INSERT INTO CHAT VALUES (SEQ_CHAT.NEXTVAL, #{roomNumber},#{roomName},#{memberNo},#{memberNick},#{withMemberNo},#{withMemberNick},#{msg},SYSDATE)
+	</insert>
+	
+	<select id="selectAllChat" parameterType="Chat" resultMap="ChatResultMap">
+		SELECT * FROM CHAT WHERE ROOM_NUMBER = #{roomNumber} ORDER BY CHAT_DATE ASC
+	</select>
+	
+	<select id="selectCheckRoom" resultType="_int">
+		SELECT COUNT(*) FROM ROOM WHERE MEMBER_NO = #{memberNo } AND WITHMEMBER_NO = #{withMemberNo }
+	</select>
+	
+	<update id="updateRoom" parameterType="Room">
+		UPDATE ROOM SET LASTCHAT_MESSAGE = #{lastChatMessage} ,LASTCHAT_DATE = SYSDATE WHERE MEMBER_NO = #{memberNo } AND WITHMEMBER_NO = #{withMemberNo }
+	</update>
+
+	<update id="updateRoom2">
+		UPDATE ROOM SET LASTCHAT_MESSAGE = #{lastChatMessage} ,LASTCHAT_DATE = SYSDATE WHERE MEMBER_NO = #{withMemberNo } AND WITHMEMBER_NO = #{memberNo }
+	</update>
+</mapper>

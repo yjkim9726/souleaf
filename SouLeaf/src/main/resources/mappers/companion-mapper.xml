@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="companionMapper">
+
+	<resultMap type="Companion" id="companionResultMap">
+		<id property="companionNo" column="COMPANION_NO"></id>
+		<result property="plantNo" column="PLANT_NO"></result>
+		<result property="memberNo" column="MEMBER_NO"></result>
+		<result property="companionNick" column="COMPANION_NICK"></result>
+		<result property="companionDate" column="COMPANION_DATE"></result>
+		<result property="companionUpdate" column="COMPANION_UPDATE"></result>
+		<result property="companionPicName" column="COMPANION_PICNAME"></result>
+		<result property="companionRepicName" column="COMPANION_REPICNAME"></result>
+		<result property="companionLastWater" column="COMPANION_LASTWATER"></result>
+		<result property="companionNeedWater" column="COMPANION_NEEDWATER"></result> 
+	</resultMap>
+	
+	<select id="selectAllList" resultMap="companionResultMap">
+		SELECT * FROM COMPANION ORDER BY COMPANION_NO ASC
+	</select>
+	
+	<select id="selectOne" resultMap="companionResultMap">
+		SELECT * FROM COMPANION WHERE COMPANION_NO = #{companionNo } ORDER BY COMPANION_NO ASC
+	</select>
+	
+	<insert id="insertcompanion">
+		INSERT INTO COMPANION 
+		VALUES(SEQ_COMPANION.NEXTVAL, #{plantNo }, #{memberNo }, #{companionNick }, DEFAULT, NULL, #{companionPicName }, #{companionRepicName}, #{companionLastWater}, #{companionNeedWater})
+	</insert>
+	
+	<update id="updatecompanion">
+		UPDATE COMPANION SET COMPANION_NICK = #{companionNick },
+		COMPANION_UPDATE = SYSDATE, COMPANION_PICNAME = #{companionPicName }, COMPANION_REPICNAME = #{companionRepicName},
+		COMPANION_LASTWATER = #{companionLastWater}, COMPANION_NEEDWATER = #{companionNeedWater}
+		WHERE COMPANION_NO = #{companionNo }
+	</update>
+	
+	<update id="updateNoFile">
+		UPDATE COMPANION SET COMPANION_NICK = #{companionNick }, COMPANION_UPDATE = SYSDATE,
+		COMPANION_LASTWATER = #{companionLastWater}, COMPANION_NEEDWATER = #{companionNeedWater}
+		WHERE COMPANION_NO = #{companionNo }
+	</update>
+	
+	<delete id="deletecompanion">
+		DELETE FROM COMPANION WHERE COMPANION_NO = #{companionNo } 
+	</delete>
+	
+	<select id="selectMemberCompanion" resultMap="companionResultMap">
+		SELECT * FROM COMPANION WHERE MEMBER_NO = #{memberNo } 
+	</select>
+	
+</mapper>

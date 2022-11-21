@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="curiosityMapper">
+	<resultMap type="Curiosity" id="curiosityResultMap">
+		<id property="curiosityNo" column="CURIOSITY_NO"/>
+		<result property="curiosityContent" column="CURIOSITY_CONTENT"/>
+		<result property="curiosityFileName" column="CURIOSITY_FILENAME"/>
+		<result property="curiosityFileRename" column="CURIOSITY_FILERENAME"/>
+		<result property="curiosityDate" column="CURIOSITY_DATE"/>
+		<result property="curiosityUpdate" column="CURIOSITY_UPDATEDATE"/>
+		<result property="criosityStatus" column="CURIOSITY_STATUS"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+		<result property="memberNick" column="MEMBER_NICK"/>
+		<result property="memberFileRename" column="MEMBER_FILERENAME"/>
+		<result property="curiosityCount" column="CURIOSITY_COUNT"/>
+		<result property="curiosityContents" column="CURIOSITY_CONTENTS"/>
+		<result property="replyCount" column="REPLY_COUNT"/>
+		<result property="num" column="NUM"/>
+	</resultMap>
+	
+	<resultMap type="CuriosityReply" id="curiosityReplyResultMap">
+		<id property="curicommentNo" column="CURICOMMENT_NO"/>
+		<result property="curicommentContent" column="CURICOMMENT_CONTENT"/>
+		<result property="curicommentDate" column="CURICOMMENT_DATE"/>
+		<result property="curicommentStatus" column="CURIOCOMMENT_STATUS"/>
+		<result property="curiosityNo" column="CURIOSITY_NO"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+		<result property="memberNick" column="MEMBER_NICK"/>		
+		<result property="memberFileRename" column="MEMBER_FILERENAME"/>		
+	</resultMap>
+	
+	<insert id="insertCuriosity">
+		INSERT INTO CURIOSITY VALUES (SEQ_CURIOSITY.NEXTVAL,#{curiosityContent},#{curiosityFileName},SYSDATE,NULL,#{memberNo},#{curiosityFileRename},DEFAULT,DEFAULT,#{curiosityContents})
+	</insert>
+	
+	<update id="updateCuriosity" parameterType="Curiosity">
+	<if test="curiosityFileRename.toString() == ''">
+			UPDATE CURIOSITY SET CURIOSITY_CONTENT = #{curiosityContent}, CURIOSITY_UPDATEDATE = SYSDATE, CURIOSITY_CONTENTS = #{curiosityContents}  WHERE CURIOSITY_NO = #{curiosityNo} AND MEMBER_NO = #{memberNo} AND CURIOSITY_STATUS = 'Y'
+	</if>
+	<if test="curiosityFileRename.toString() != ''">
+			UPDATE CURIOSITY SET CURIOSITY_CONTENT = #{curiosityContent}, CURIOSITY_UPDATEDATE = SYSDATE, CURIOSITY_FILERENAME = #{curiosityFileRename}, CURIOSITY_CONTENTS = #{curiosityContents}  WHERE CURIOSITY_NO = #{curiosityNo} AND MEMBER_NO = #{memberNo} AND CURIOSITY_STATUS = 'Y'
+	</if>
+	</update>
+	
+	<update id="updateViewCount">
+		UPDATE CURIOSITY SET CURIOSITY_COUNT = CURIOSITY_COUNT+1 WHERE CURIOSITY_NO = #{curiosityNo}
+	</update>
+	
+	<select id="selectAllList" parameterType="Curiosity" resultMap="curiosityResultMap">
+		SELECT CURIOSITY_NO,CURIOSITY_CONTENT,CURIOSITY_DATE,CURIOSITY_FILERENAME,MEMBER_NO,MEMBER_NICK,CURIOSITY_COUNT,(SELECT COUNT(*) FROM CURICOMMENT B WHERE A.CURIOSITY_NO=B.CURIOSITY_NO AND CURIOCOMMENT_STATUS='Y') REPLY_COUNT FROM CURIOSITY A JOIN MEMBER USING(MEMBER_NO) WHERE CURIOSITY_STATUS = 'Y' ORDER BY CURIOSITY_NO DESC
+	</select>
+	
+	<select id="selectCuriosity" parameterType="Curiosity" resultMap="curiosityResultMap">
+		SELECT * FROM CURIOSITY JOIN MEMBER USING(MEMBER_NO) WHERE CURIOSITY_NO = #{curiosityNo} AND CURIOSITY_STATUS = 'Y'
+	</select>
+	
+	<select id="selectListCount" resultType="_int">
+		SELECT COUNT(*) FROM CURIOSITY WHERE CURIOSITY_STATUS = 'Y'
+	</select>
+	
+	<update id="deleteCuriosity">
+		UPDATE CURIOSITY SET CURIOSITY_STATUS = 'N' WHERE CURIOSITY_NO = #{curiosityNo} AND CURIOSITY_STATUS = 'Y'
+	</update>
+	
+	<!-- 댓글 -->
+	
+	<insert id="insertReply">
+		INSERT INTO CURICOMMENT VALUES (SEQ_CURICOMMENT.NEXTVAL, #{curicommentContent}, DEFAULT, #{curiosityNo}, #{memberNo}, DEFAULT)
+	</insert>
+	
+	<select id="selectAllReplyList" parameterType="CuriosityReply" resultMap="curiosityReplyResultMap">
+		SELECT * FROM CURICOMMENT JOIN MEMBER USING(MEMBER_NO) WHERE CURIOSITY_NO = #{curiosityNo} AND CURIOCOMMENT_STATUS = 'Y' ORDER BY CURICOMMENT_NO
+	</select>
+	
+	<update id="updateReply">
+		UPDATE CURICOMMENT SET CURICOMMENT_CONTENT = #{curicommentContent} WHERE CURIOSITY_NO= #{curiosityNo} AND CURICOMMENT_NO = #{curicommentNo} AND MEMBER_NO = #{memberNo}
+	</update>
+	
+	<update id="deleteReply">
+		UPDATE CURICOMMENT SET CURIOCOMMENT_STATUS = 'N' WHERE CURICOMMENT_NO = #{curicommentNo} AND CURIOCOMMENT_STATUS = 'Y'
+	</update>
+	
+	<update id="deleteReplys">
+		UPDATE CURICOMMENT SET CURIOCOMMENT_STATUS = 'N' WHERE CURIOSITY_NO = #{curiosityNo} AND CURIOCOMMENT_STATUS = 'Y'
+	</update>
+
+	<!-- 마이페이지 -->
+	<select id="selectAllMyCuriosity" resultMap="curiosityResultMap">
+		SELECT ROW_NUMBER() OVER (ORDER BY CURIOSITY_DATE ASC) AS NUM, A.* FROM (SELECT CURIOSITY_NO,CURIOSITY_CONTENT, CURIOSITY_DATE, MEMBER_NO, CURIOSITY_COUNT,CURIOSITY_STATUS FROM CURIOSITY) A WHERE MEMBER_NO = #{memberNo} AND CURIOSITY_STATUS = 'Y' ORDER BY CURIOSITY_DATE DESC
+	</select>
+	
+	<select id="selectMyListCount" resultType="_int">
+		SELECT COUNT(*) FROM CURIOSITY WHERE MEMBER_NO = #{memberNo} AND CURIOSITY_STATUS = 'Y'
+	</select>
+	
+ 	<select id="selectSearchAllList" parameterType="com.souleaf.spring.mypage.domain.MypageSearch" resultMap="curiosityResultMap">
+		SELECT ROW_NUMBER() OVER (ORDER BY CURIOSITY_DATE ASC) AS NUM, A.* FROM ( SELECT * FROM CURIOSITY ) A 
+		<if test="searchCondition.toString() == 'searchTitle'">
+			WHERE MEMBER_NO = #{memberNo} AND CURIOSITY_CONTENT LIKE '%' || #{searchValue } || '%' AND CURIOSITY_STATUS = 'Y'
+		</if>	
+		<if test="searchCondition.toString() == 'searchContent'">
+			WHERE MEMBER_NO = #{memberNo} AND CURIOSITY_CONTENTS LIKE '%' || #{searchValue } || '%' AND CURIOSITY_STATUS = 'Y'
+		</if>
+		<if test="searchCondition.toString() == 'searchAll'">
+			WHERE MEMBER_NO = #{memberNo} AND (CURIOSITY_CONTENT LIKE '%' || #{searchValue } || '%' OR CURIOSITY_CONTENTS LIKE '%' || #{searchValue } || '%') AND CURIOSITY_STATUS = 'Y' 
+		</if>
+		ORDER BY CURIOSITY_DATE DESC
+	</select> 
+	
+	<select id="getMySearchCount" resultType="_int">
+		SELECT COUNT(*) FROM CURIOSITY 
+		<if test="searchCondition.toString() == 'searchTitle'">
+			WHERE MEMBER_NO = #{memberNo} AND CURIOSITY_CONTENT LIKE '%' || #{searchValue } || '%'
+		</if>	
+		<if test="searchCondition.toString() == 'searchContent'">
+			WHERE MEMBER_NO = #{memberNo} AND CURIOSITY_CONTENTS LIKE '%' || #{searchValue } || '%'
+		</if>
+		<if test="searchCondition.toString() == 'searchAll'">
+			WHERE MEMBER_NO = #{memberNo} AND (CURIOSITY_CONTENT LIKE '%' || #{searchValue } || '%' OR CURIOSITY_CONTENTS LIKE '%' || #{searchValue } || '%')
+		</if>
+		AND CURIOSITY_STATUS = 'Y'
+	</select>
+	
+	
+	<select id="selectAll" resultMap="curiosityResultMap">
+		SELECT * FROM CURIOSITY JOIN MEMBER USING(MEMBER_NO) WHERE CURIOSITY_STATUS = 'Y' ORDER BY CURIOSITY_NO DESC
+	</select>
+	
+	<update id="deleteMyCuriosity" parameterType="map">
+		UPDATE CURIOSITY SET CURIOSITY_STATUS = 'N' WHERE CURIOSITY_NO IN (${chkNo})
+	</update>
+	
+</mapper>

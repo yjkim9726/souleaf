@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boastMapper">
+   <resultMap type="Boast" id="boastResultMap">
+      <id property="boastNo" column="BOAST_NO"></id>
+      <result property="boastTitle" column="BOAST_TITLE"></result>
+      <result property="boastContents" column="BOAST_CONTENTS"></result>
+      <result property="boastCount" column="BOAST_COUNT"></result>
+      <result property="boastDate" column="BOAST_DATE"></result>
+      <result property="boastUpdate" column="BOAST_UPDATE"></result>
+      <result property="memberNo" column="MEMBER_NO"></result>
+      <result property="boastPoint" column="BOAST_POINT"></result>
+      <result property="boastStatus" column="BOAST_STATUS"></result>
+      <result property="plantNo" column="PLANT_NO"></result>
+      <result property="companionNo" column="COMPANION_NO"></result>
+      <result property="plantName" column="PLANT_NAME"></result>
+      <result property="boastFileName" column="BOAST_FILENAME"></result>
+      <result property="boastFileRename" column="BOAST_FILERENAME"></result>
+      <result property="memberNick" column="MEMBER_NICK"></result>
+      <result property="memberFileRename" column="MEMBER_FILERENAME"></result>
+      <result property="boastReplyCount" column="BOAST_REPLYCOUNT" />
+      <result property="boastLike" column="BOAST_LIKE" />
+   </resultMap>
+
+   <!-- 댓글 관련 부분 -->
+
+
+   <!-- 게시판 -->
+   <select id="selectAll" resultMap="boastResultMap">
+   SELECT BOAST_NO,BOAST_TITLE,BOAST_CONTENTS,BOAST_FILERENAME,BOAST_DATE,BOAST_COUNT,MEMBER_NICK,PLANT_NAME FROM BOAST JOIN MEMBER USING(MEMBER_NO) JOIN PLANT USING(PLANT_NO) WHERE BOAST_STATUS = 'Y' ORDER BY BOAST_NO DESC
+   </select>
+   
+   <select id="selectListCount" resultType="_int">
+      SELECT COUNT(*) FROM BOAST JOIN MEMBER USING(MEMBER_NO) JOIN PLANT USING(PLANT_NO) WHERE BOAST_STATUS = 'Y'
+   </select>
+   <select id="selectAllList" parameterType="Boast"
+      resultMap="boastResultMap">
+     SELECT BOAST_NO,BOAST_TITLE,BOAST_CONTENTS,BOAST_FILERENAME,BOAST_DATE,BOAST_COUNT,MEMBER_NICK,PLANT_NAME, (SELECT COUNT(*) FROM BOCOMMENT B WHERE A.BOAST_NO=B.BOAST_NO AND BOAST_STATUS='Y' AND BOCOMMENT_STATUS = 'Y') BOAST_REPLYCOUNT, (SELECT COUNT(*) FROM BOASTLIKE C WHERE A.BOAST_NO=C.BOAST_NO AND LIKE_CHECK = 1 )BOAST_LIKE FROM BOAST A JOIN MEMBER USING(MEMBER_NO) JOIN PLANT USING(PLANT_NO) WHERE BOAST_STATUS = 'Y' ORDER BY BOAST_NO DESC
+
+   </select>
+   <select id="selectOne" parameterType="Boast"
+      resultMap="boastResultMap">
+     SELECT * FROM BOAST B JOIN COMPANION C ON B.COMPANION_NO=C.COMPANION_NO JOIN MEMBER M ON B.MEMBER_NO=M.MEMBER_NO WHERE B.BOAST_NO = #{boastNo} AND BOAST_STATUS = 'Y'
+   </select>
+
+   <insert id="insertBoast">
+      INSERT INTO BOAST VALUES(SEQ_BOAST.NEXTVAL,#{boastTitle },NULL,DEFAULT, DEFAULT, NULL, #{memberNo},DEFAULT, DEFAULT, #{plantNo},#{boastFileRename},#{boastContents},#{companionNo})
+    
+   </insert>
+   <!-- INSERT INTO BOAST VALUES(SEQ_BOAST.NEXTVAL,#{boastTitle }, #{boastContent 
+      }, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT) </insert> -->
+
+   <update id="updateBoast">
+      UPDATE BOAST SET BOAST_TITLE = #{boastTitle}, BOAST_CONTENTS =
+      #{boastContents}, BOAST_UPDATE = SYSDATE, PLANT_NO = #{plantNo}, COMPANION_NO = #{companionNo}, BOAST_FILERENAME = #{boastFileRename} WHERE BOAST_NO = #{boastNo}
+   </update>
+   <update id="updateCount">
+      UPDATE BOAST SET BOAST_COUNT = BOAST_COUNT + 1, BOAST_POINT = BOAST_POINT +1 WHERE BOAST_NO = #{boastNo }
+   </update>
+
+   <update id="deleteBoast" >
+      UPDATE BOAST SET BOAST_STATUS = 'N' WHERE BOAST_NO = #{boastNo }
+   </update>
+   
+   <update id="deleteAdminBoast" parameterType="Map">
+      UPDATE BOAST SET BOAST_STATUS = 'N' WHERE BOAST_NO IN (${checkNo})
+   </update>
+   
+   <select id="selectLikeCount" resultType="_int">
+  	 SELECT COUNT(*) FROM BOASTLIKE WHERE BOAST_NO = #{boastNo} AND LIKE_CHECK = 1
+   </select>
+   
+   <select id="selectLikeCheck" parameterType="Boast" resultType="_int">
+  	 SELECT COUNT(*) FROM BOASTLIKE WHERE BOAST_NO = #{boastNo} AND MEMBER_NO = #{memberNo} AND LIKE_CHECK = 1
+   </select>
+   
+      <select id="selectLikeAddCheck" parameterType="Boast" resultType="_int">
+  	 SELECT COUNT(*) FROM BOASTLIKE WHERE BOAST_NO = #{boastNo} AND MEMBER_NO = #{memberNo}
+   </select>
+   
+   <insert id="insertLike">
+ 	  INSERT INTO BOASTLIKE VALUES (SEQ_BOASTLIKE.NEXTVAL,#{boastNo},#{memberNo},DEFAULT)
+   </insert>
+   
+   <update id="updateLike" parameterType="Boast">
+   	UPDATE BOASTLIKE SET LIKE_CHECK = ${boastLike} WHERE BOAST_NO = #{boastNo} AND MEMBER_NO = #{memberNo}
+   </update>
+
+   <!-- 댓글 -->
+   <resultMap type="BoastReply" id="boastReplyResultMap">
+      <id property="bocommentNo" column="BOCOMMENT_NO"/>
+      <result property="boastNo" column="BOAST_NO"/>
+      <result property="bocommentContent" column="BOCOMMENT_CONTENT"/>
+      <result property="bocommentDate" column="BOCOMMENT_DATE"/>
+      <result property="memberNo" column="MEMBER_NO"/>
+      <result property="memberNick" column="MEMBER_NICK"/>      
+      <result property="bocommentStatus" column="BOCOMMENT_STATUS"/>
+      <result property="bocommentParentNo" column="BOCOMMENT_PARENT_NO"/>
+      <result property="bocommentDepth" column="BOCOMMENT_DEPTH"/>
+   </resultMap>
+
+   <insert id="insertBoastReply">
+      INSERT INTO BOCOMMENT VALUES(SEQ_BOCOMMENT.NEXTVAL,#{boastNo},#{bocommentContent},DEFAULT,#{memberNo},DEFAULT,NULL,DEFAULT)
+   </insert>
+   
+    <insert id="insertBoastReReply">
+      INSERT INTO BOCOMMENT VALUES(SEQ_BOCOMMENT.NEXTVAL,#{boastNo},#{bocommentContent},DEFAULT,#{memberNo},DEFAULT,#{bocommentNo},1)
+   </insert>
+   
+   <select id="selectBoastReply" parameterType="BoastReply" resultMap="boastReplyResultMap">
+      SELECT * FROM BOCOMMENT JOIN MEMBER USING(MEMBER_NO) WHERE BOAST_NO =#{boastNo} AND BOCOMMENT_STATUS = 'Y' ORDER BY BOCOMMENT_NO,BOCOMMENT_PARENT_NO
+   </select>
+   
+   <update id="updateReply">
+      UPDATE BOCOMMENT SET BOCOMMENT_CONTENT = #{bocommentContent} WHERE BOCOMMENT_NO = #{bocommentNo}
+   </update>
+   
+   	<update id="deleteReplys">
+	UPDATE BOCOMMENT SET BOCOMMENT_STATUS = 'N' WHERE BOAST_NO = #{boastNo}
+	 </update>
+   
+	<update id="deleteBoastReply">
+	UPDATE BOCOMMENT SET BOCOMMENT_STATUS = 'N' WHERE BOCOMMENT_NO= #{bocommentNo} OR BOCOMMENT_PARENT_NO = #{bocommentNo} AND BOCOMMENT_STATUS = 'Y'
+	 </update>
+
+	<update id="deleteBoastReReply">
+	UPDATE BOCOMMENT SET BOCOMMENT_STATUS = 'N' WHERE BOAST_NO = #{boastNo } AND BOCOMMENT_NO = #{bocommentNo }
+	 </update>
+	 
+	<select id="getBoastReReply" resultType="_int">
+		SELECT COUNT(*) FROM BOCOMMENT WHERE BOAST_NO = #{boastNo}
+	</select>
+	
+	
+	<!-- 마이페이지 -->
+
+	<select id="selectAllMyBoast" resultMap="boastResultMap">
+		SELECT ROW_NUMBER() OVER (ORDER BY BOAST_DATE ASC) AS NUM, A.* FROM (SELECT * FROM BOAST) A WHERE MEMBER_NO = #{memberNo} AND BOAST_STATUS = 'Y' ORDER BY BOAST_DATE DESC
+	</select>
+	
+	<select id="selectMyListCount" resultType="_int">
+		SELECT COUNT(*) FROM BOAST WHERE MEMBER_NO = #{memberNo} AND BOAST_STATUS = 'Y'
+	</select>
+	
+	<select id="selectMySearchAllList" parameterType="com.souleaf.spring.mypage.domain.MypageSearch" resultMap="boastResultMap">
+		SELECT ROW_NUMBER() OVER (ORDER BY BOAST_DATE ASC) AS NUM, A.* FROM ( SELECT * FROM BOAST ) A
+		<if test="searchCondition.toString() == 'searchTitle'">
+		WHERE MEMBER_NO = #{memberNo} AND BOAST_TITLE LIKE '%' || #{searchValue } || '%' AND BOAST_STATUS = 'Y'
+		</if>
+		<if test="searchCondition.toString() == 'searchContent'">
+		WHERE MEMBER_NO = #{memberNo} AND BOAST_CONTENTS LIKE '%' || #{searchValue } || '%' AND BOAST_STATUS = 'Y'
+		</if>
+		<if test="searchCondition.toString() == 'searchAll'">
+		WHERE MEMBER_NO = #{memberNo} AND (BOAST_TITLE LIKE '%' || #{searchValue } || '%' OR BOAST_CONTENTS LIKE '%' || #{searchValue } || '%') AND BOAST_STATUS = 'Y'
+		</if>
+		ORDER BY BOAST_DATE DESC
+	</select>
+	
+	<select id="getMySearchCount" resultType="_int">
+		SELECT COUNT(*) FROM BOAST
+		<if test="searchCondition.toString() == 'searchTitle'">
+		WHERE MEMBER_NO = #{memberNo} AND BOAST_TITLE LIKE '%' || #{searchValue } || '%'
+		</if>
+		<if test="searchCondition.toString() == 'searchContent'">
+		WHERE MEMBER_NO = #{memberNo} AND BOAST_CONTENTS LIKE '%' || #{searchValue } || '%'
+		</if>
+		<if test="searchCondition.toString() == 'searchAll'">
+		WHERE MEMBER_NO = #{memberNo} AND (BOAST_TITLE LIKE '%' || #{searchValue } || '%' OR BOAST_CONTENTS LIKE '%' || #{searchValue } || '%')
+		</if>
+		AND BOAST_STATUS = 'Y'
+	</select>
+	
+	<update id="deleteMyBoast" parameterType="map">
+		UPDATE BOAST SET BOAST_STATUS = 'N' WHERE BOAST_NO IN (${chkNo})
+	</update>
+	
+	<select id="selectAllRank" parameterType="Boast" resultMap="boastResultMap">
+		SELECT * FROM BOAST ORDER BY BOAST_POINT DESC
+	</select>
+	
+	
+</mapper>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <package id="1" language="java" name="com.souleaf.spring.qna.domain" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/qna/domain" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="671" width="794" x="27" y="37"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="2" language="java" name="com.souleaf.spring.qna.domain.Qna" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/qna/domain/Qna.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="311" width="487" x="184" y="377"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.souleaf.spring.qna.domain.QnaSearch" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/qna/domain/QnaSearch.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="426" y="253"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="4" language="java" name="com.souleaf.spring.qna.service" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/qna/service" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="549" width="765" x="877" y="120"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <interface id="5" language="java" name="com.souleaf.spring.qna.service.QnaService" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/qna/service/QnaService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1071" y="375"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="6" language="java" name="com.souleaf.spring.qna.service.QnaServiceImpl" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/qna/service/QnaServiceImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1451" y="388"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="7" language="java" name="com.souleaf.spring.qna.store" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/qna/store" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="426" width="790" x="1710" y="143"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <interface id="8" language="java" name="com.souleaf.spring.qna.store.QnaStore" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/qna/store/QnaStore.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1908" y="376"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="9" language="java" name="com.souleaf.spring.qna.store.QnaStoreLogic" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/qna/store/QnaStoreLogic.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="363" width="356" x="2101" y="194"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="10" language="java" name="com.souleaf.spring.qna.controller" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/qna/controller" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="413" width="661" x="2565" y="154"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="11" language="java" name="com.souleaf.spring.qna.controller.QnaController" project="SouLeaf" 
+    file="/SouLeaf/src/main/java/com/souleaf/spring/qna/controller/QnaController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2919" y="381"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="12">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <realization id="13">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

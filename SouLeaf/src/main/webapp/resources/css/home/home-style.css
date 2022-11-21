@@ -1,0 +1,245 @@
+.wrap {
+    position: sticky;
+    z-index: 3;
+    width: 100%;
+    top: 0px;
+    width: 100%;
+    background: #00bd56;
+    background: #207dff;
+    background: -moz-linear-gradient(45deg, #207dff 0%, #00bd55 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, #207dff), color-stop(100%, #00bd55));
+    background: -webkit-linear-gradient(
+45deg
+, #207dff 0%, #00bd55 100%);
+    background: -o-linear-gradient(45deg, #207dff 0%, #00bd55 100%);
+    background: -ms-linear-gradient(45deg, #207dff 0%, #00bd55 100%);
+    background: linear-gradient(   
+3deg
+ , #207dff00 0%, #00bd551f 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#207dff', endColorstr='#00bd55', GradientType=1 );
+}
+.ftco-navbar-light {
+    background: #fff0 !important;
+    z-index: 3;
+    padding: 0;
+    position: sticky;
+    top: 40px;
+    -webkit-box-shadow: 0px 5px 20px -17px rgb(0 0 0 / 34%);
+    -moz-box-shadow: 0px 5px 20px -17px rgba(0, 0, 0, 0.34);
+    box-shadow: 0px 5px 20px -17px rgb(0 0 0 / 0%);
+}
+.ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
+    font-size: 14px;
+    //padding-top: 2.3rem;
+    //padding-bottom: 2.3rem;
+    padding-left: 18px;
+    padding-right: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    position: relative;
+    text-transform: uppercase;
+    opacity: 1 !important;
+}
+.ftco-navbar-light .navbar-nav > .nav-item.active > a:before {
+     visibility: hidden;
+    background-color: #00bd56;
+    -webkit-transform: scaleX(1);
+    -ms-transform: scaleX(1);
+    transform: scaleX(1);
+}
+/* ------------------------------------------------------------*/
+.wrap-origin {
+   position: sticky;
+    z-index: 3;
+    width: 100%;
+    top: 0px;
+    width: 100%;
+    background: #00bd56;
+    background: #207dff;
+    background: -moz-linear-gradient(45deg, #207dff 0%, #00bd55 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, #207dff), color-stop(100%, #00bd55));
+    background: -webkit-linear-gradient(
+45deg
+, #207dff 0%, #00bd55 100%);
+    background: -o-linear-gradient(45deg, #207dff 0%, #00bd55 100%);
+    background: -ms-linear-gradient(45deg, #207dff 0%, #00bd55 100%);
+    background: linear-gradient(
+45deg
+, #207dff 0%, #00bd55 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#207dff', endColorstr='#00bd55', GradientType=1 );
+}
+.ftco-navbar-origin {
+    background: #fff !important;
+    z-index: 3;
+    padding: 0;
+    position: sticky;
+    top: 40px;
+    -webkit-box-shadow: 0px 5px 20px -17px rgb(0 0 0 / 34%);
+    -moz-box-shadow: 0px 5px 20px -17px rgba(0, 0, 0, 0.34);
+    box-shadow: 0px 5px 20px -17px rgb(0 0 0 / 0%);
+}
+.ftco-navbar-origin .navbar-nav > .nav-item > .nav-link {
+    font-size: 14px;
+    //padding-top: 2.3rem;
+    //padding-bottom: 2.3rem;
+    padding-left: 18px;
+    padding-right: 18px;
+    font-weight: 700;
+    color: #000;
+    position: relative;
+    text-transform: uppercase;
+    opacity: 1 !important;
+}
+.ftco-navbar-origin .navbar-nav > .nav-item.active > a:before {
+     visibility: visible;
+    background-color: #00bd56;
+    -webkit-transform: scaleX(1);
+    -ms-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+/* ------------------------------------------------------------*/
+
+.ftco-navbar-light .navbar-toggler {
+    border: none;
+    color: rgb(255 255 255 / 50%) !important;
+    cursor: pointer;
+    padding-right: 0;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: .1em;
+}
+.ftco-navbar-origin .navbar-toggler {
+    border: none;
+    color: rgb(0 0 0 / 50%) !important;
+    cursor: pointer;
+    padding-right: 0;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: .1em;
+}
+
+.services .icon {
+    position: absolute;
+    top: 80px;
+    left: 70%;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    line-height: 1.3;
+    border-radius: 50%;
+    background: #ffffff00;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-top: -50px;
+}
+
+.rank-form span{
+	color : #00bd56;
+}
+
+.plant-search{
+	border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    padding-left: 0;
+      
+}
+.search-form .form-group input {
+    padding-right: 0;
+    font-size: 4.78571vw;
+    font-weight:800;
+    width: 15.63vw;
+    display: revert; 
+    padding-top: 10px;
+}
+.form-control {
+    height: 100px !important;
+    background: #fff0 !important;
+    color: #999 !important;
+    //font-size: 14px;
+    //border-radius: 5px;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border-bottom: 5px solid #000;
+    
+}
+.form-control:focus, .form-control:active {
+    border-color: #000;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+}
+
+.typing-txt{display: none;}
+.typeing-txt ul{list-style:none;}
+.typing {  
+  display: inline; 
+  animation-name: cursor; 
+  animation-duration: 0.3s; 
+  animation-iteration-count: infinite; 
+  font-size: 4.78571vw;
+  color:#999;
+  line-height:1;
+ /*  position: absolute;
+    left: 38%;
+    top: 13%; */
+} 
+@keyframes cursor{ 
+  0%{border-right: 1px solid #fff} 
+  50%{border-right: 1px solid #000} 
+  100%{border-right: 1px solid #fff} 
+}
+
+.btn-outline-success {
+    color: #666;
+    border-color: #aaa;
+    font-size: 0.88571vw;
+}
+
+.custom-btn{
+	color:#00b564; border-color:#00b564;  border-radius: 50px; font-size: 0.88571vw;
+}
+
+.clinic-overlay{
+	background-color:rgba(0, 0, 0, 0.4); /*살짝 투명한 검정으로 배경색*/
+	 width:100%; height:100%; position: absolute; /*다른 요소들 위로 겹쳐질 수 있게함*/
+
+}
+
+.clinic-search{
+	border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    padding-left: 0;
+      height: 100px !important;
+      width : 45.78571vw;
+    background: #fff0 !important;
+    color: #eee !important;
+    font-size: 3.78571vw;
+    //border-radius: 5px;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border-bottom: 1px solid #fff;
+}
+.clinic-search::placeholder {
+	color:#eee;
+}
+textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
+    outline: 0 none;
+}
+
+.boast-title{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 300px;
+  //height: 80px;
+}
